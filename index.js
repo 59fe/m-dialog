@@ -22,10 +22,6 @@ var _getTransitionEnd = require('m-base/js/getTransitionEnd');
 
 var _getTransitionEnd2 = _interopRequireDefault(_getTransitionEnd);
 
-var _iconM = require('@ali/icon-m');
-
-var _iconM2 = _interopRequireDefault(_iconM);
-
 var _maskM = require('m-mask');
 
 var _maskM2 = _interopRequireDefault(_maskM);
