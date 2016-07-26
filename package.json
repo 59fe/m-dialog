@@ -1,0 +1,55 @@
+{
+  "name": "m-dialog",
+  "version": "1.0.0",
+  "description": "m-dialog 移动端模态对话框",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/59fe/m-dialog.git"
+  },
+  "homepage": "https://github.com/59fe/m-dialog",
+  "author": {
+    "name": "半边",
+    "email": "itaofe@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "半边",
+      "email": "itaofe@gmail.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/59fe/m-dialog/issues"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "react": "~15.2.0",
+    "m-base": "^1.0.5",
+    "m-mask": "^1.0.0",
+    "classnames": "~2.2.3"
+  },
+  "keywords": [
+    "dialog",
+    "react",
+    "mobile"
+  ],
+  "license": "Apache-2.0"
+}
+
+
+  "devDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "dependencies": {
+    "@ali/button-m": "~1.0.2",
+    "@ali/icon-m": "~1.0.0",
+    "@ali/mask-m": "~1.0.0",
+    "@ali/msui-core": "~1.0.3",
+    "classnames": "~2.2.3",
+    "react-tap-event-plugin": "0.2.1"
+  },
+
