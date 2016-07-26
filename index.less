@@ -1,0 +1,274 @@
+@import "~m-base/base/mixins";
+@import "~m-base/base/variables";
+@import "~m-mask/index.less";
+
+/* === Dialogs === */
+@actionsDialogDuration:300ms;
+@actionsDialogButtonBg: rgba(243,243,243,0.95);
+@actionsDialogActiveButtonBg:#dcdcdc;
+@gray: #8e8e93;
+@dialog-border-radius: @R1; //4dp
+@dialog-duration:400ms;
+@dialog-title-align: left;
+@dialog-text-align: left;
+
+/*
+.dialog-overlay, .preloader-indicator-overlay, .popup-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 10600;
+    visibility: hidden;
+    opacity: 0;
+}
+*/
+.dialog-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    .mask {
+        opacity: 0;
+        &.dialog-overlay-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.dialog {
+    width: 7.5rem;
+    position: fixed;
+    z-index: 11000;
+    left: 50%;
+    margin-left: -3.75rem;
+    margin-top: 0;
+    top: 50%;
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0,0,0) scale(1.185);
+    transition-property: transform, opacity;
+    color: @N2_4;
+    display: block;
+    &.dialog-in {
+        opacity: 1;
+        transition-duration: @dialog-duration;
+        transform: translate3d(0,0,0) scale(1);
+    }
+    &.dialog-out {
+        opacity: 0;
+        z-index: 11000-1;
+        transition-duration: @dialog-duration;
+        transform: translate3d(0,0,0) scale(0.815);
+    }
+    .suicon {
+    }
+    &>b {
+        position: absolute;
+        z-index: 10;
+        .top(-22);
+        .right(-22);
+        .width(44);
+        .height(44);
+        font-weight: normal;
+        & > i {
+            line-height: 1;
+            font-size: 0.5rem;
+            position: absolute;
+            .top(9);
+            .right(9);
+            background: #666;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            padding: 0.1rem;
+            color: #fff;
+            font-family: sans-serif;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: .2px;
+            &+.dialog-inner {
+                border-top-right-radius: 0;
+            }
+        }
+    }
+}
+.dialog-inner {
+    .padding(@S7, @S6, @S6, @S6);
+    .font-size(@font-size-subhead);
+    .hairline(bottom, @N1_6);
+    border-top-left-radius: (@dialog-border-radius / @rem) * 1rem;
+    border-top-right-radius: (@dialog-border-radius / @rem) * 1rem;
+    background: @N1_1;
+    position: relative;
+}
+.dialog-title {
+    font-weight: 500;
+    .font-size(@font-size-headline);
+    text-align: @dialog-title-align;
+    +.dialog-text {
+        color: @N2_3;
+        .margin-top(@S2);
+        text-align: @dialog-text-align;
+    }
+}
+.dialog-buttons {
+    .height(@S11);
+    overflow: hidden;
+    .flexbox();
+    .justify-content(center);
+    &.dialog-buttons-vertical {
+        display: block;
+        height: auto;
+    }
+}
+.dialog-button {
+    width: 100%;
+    padding: 0 10px;
+    .height(@S11);
+    .font-size(@font-size-subhead);
+    .line-height(@S11);
+    background: @N1_1;
+    text-align: center;
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    box-sizing: border-box;
+    .hairline(right, @N1_6);
+    -webkit-box-flex:1;
+    -ms-flex:1;
+
+    &:first-child {
+        border-bottom-left-radius: (@dialog-border-radius / @rem) * 1rem;
+    }
+    &:last-child {
+        .hairline-remove(right);
+        border-bottom-right-radius: (@dialog-border-radius / @rem) * 1rem;
+    }
+    &:first-child:last-child {
+        border-bottom-left-radius: (@dialog-border-radius / @rem) * 1rem;
+        border-bottom-right-radius: (@dialog-border-radius / @rem) * 1rem;
+    }
+
+    &:active, &.active-state {
+        background: @N1_4;
+    }
+    &.btn-primary {
+        background: @B1_1;
+    }
+    &.btn-primary:active, &.btn-primary.active-state{
+        background: @B1_2;
+    }
+    .dialog-buttons-vertical & {
+        .hairline-remove(right);
+        .hairline-remove(top);
+        .hairline(bottom, @N1_6);
+        border-radius: 0;
+        &:last-child {
+            .hairline-remove(bottom);
+        }
+    }
+}
+.dialog-no-buttons {
+    .dialog-inner {
+        .hairline-remove(bottom);
+    }
+    .dialog-buttons {
+        display: none;
+    }
+}
+// Action sheet
+.actions-dialog {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 11000;
+    width: 100%;
+    transform: translate3d(0,100%,0);
+    &.dialog-in {
+        transition-duration: @actionsDialogDuration;
+        transform: translate3d(0,0,0);
+    }
+    &.dialog-out {
+        z-index: 11000-1;
+        transition-duration: @actionsDialogDuration;
+        transform: translate3d(0,100%,0);
+    }
+}
+.actions-dialog-group {
+    margin: 0.4rem;
+}
+.actions-dialog-button, .actions-dialog-label {
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+    margin: 0;
+    background: @actionsDialogButtonBg;
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    .hairline(bottom, #d2d2d6);
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    b {
+        font-weight: 700;
+    }
+    &.actions-dialog-button-bold {
+        font-weight: 700;
+    }
+    &.actions-dialog-button-danger {
+        color: @F1_3;
+    }
+    &.color-danger {
+      color: @F1_3;
+    }
+    &.bg-danger {
+      background: @F1_3;
+      color: white;
+      &:active {
+      background: @F1_1;
+      }
+    }
+    &:first-child {
+        border-radius: 0.2rem 0.2rem 0 0;
+    }
+    &:last-child {
+        .hairline-remove(bottom);
+        border-radius: 0 0 0.2rem 0.2rem;
+    }
+    &:first-child:last-child {
+        border-radius: 0.2rem;
+    }
+    &.disabled {
+        opacity: 0.95;
+        color:@gray;
+    }
+}
+.actions-dialog-button {
+    cursor: pointer;
+    line-height: 2.15rem;
+    font-size:1rem;
+    color: @color-primary;
+    &:active, &.active-state {
+        background: @actionsDialogActiveButtonBg;
+    }
+}
+.actions-dialog-label {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    min-height: 2.2rem;
+    padding: 0.4rem 0.5rem;
+    color: @N2_3;
+    .flexbox();
+    .justify-content(center);
+    .align-items(center);
+}
+
