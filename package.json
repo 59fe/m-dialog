@@ -1,6 +1,6 @@
 {
   "name": "m-dialog",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "m-dialog 移动端模态对话框",
   "main": "index.js",
   "scripts": {
