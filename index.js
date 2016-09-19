@@ -126,7 +126,7 @@ var Dialog = function (_React$Component) {
         };
         return _react2.default.createElement(
             'div',
-            { className: 'dialog-wrap ' + props.className, style: wrapStyle },
+            { className: 'dialog-wrap ' + (props.className || ''), style: wrapStyle },
             _react2.default.createElement(_maskM2.default, { className: dialogOverlayCls }),
             _react2.default.createElement(
                 'div',
