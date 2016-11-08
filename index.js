@@ -66,6 +66,7 @@ var Dialog = function (_React$Component) {
         return _this;
     }
 
+    // 对外暴露该方法，给用户调用
     Dialog.prototype.destroy = function() {
         this.setState({
             visible: false

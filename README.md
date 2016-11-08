@@ -36,9 +36,11 @@
 
 包括：
 
-- `Dialog.alert`
-- `Dialog.confirm`
+- `const obj = Dialog.alert`
+- `const obj = Dialog.confirm`
 
 以上均为一个函数，参数为 object，具体属性上
+
+```obj```为对象实例，可以直接调用```obj.destroy()```关闭对话框
 
 
