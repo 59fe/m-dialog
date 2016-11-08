@@ -66,18 +66,23 @@ var Dialog = function (_React$Component) {
         return _this;
     }
 
-    Dialog.prototype.onCancel = function onCancel(e) {
+    Dialog.prototype.destroy = function() {
         this.setState({
             visible: false
         });
         this.unmountDialog();
+
+    }
+    Dialog.prototype._onCancel = function onCancel(e) {
+        this.props.onCancel.call(this);
+        this.destroy();
     };
 
-    Dialog.prototype.onOk = function onOk(e) {
+    Dialog.prototype._onOk = function onOk(e) {
         // 点击确定按钮的回调函数，返回true或undefined则关闭对话框，返回false则不执行任何操作
         var needUnmount = this.props.onOk.call(this);
         if (needUnmount !== false) {
-            this.onCancel();
+            this._onCancel();
         }
     };
 
@@ -133,7 +138,7 @@ var Dialog = function (_React$Component) {
                 { ref: 'dialog', className: dialogCls, style: dialogStyle },
                 props.withCloseIcon ? _react2.default.createElement(
                     'b',
-                    { onClick: this.onCancel.bind(this) },
+                    { onClick: this._onCancel.bind(this) },
                     _react2.default.createElement('i', null, String.fromCharCode(215))
                 ) : false,
                 _react2.default.createElement(
@@ -151,12 +156,12 @@ var Dialog = function (_React$Component) {
                     { className: 'dialog-buttons ' },
                     props.confirm ? _react2.default.createElement(
                         'span',
-                        { className: 'dialog-button', onClick: this.onCancel.bind(this) },
+                        { className: 'dialog-button', onClick: this._onCancel.bind(this) },
                         props.cancelText
                     ) : false,
                     _react2.default.createElement(
                         'span',
-                        { className: okBtnCls, onClick: this.onOk.bind(this) },
+                        { className: okBtnCls, onClick: this._onOk.bind(this) },
                         props.okText
                     )
                 ) : false
@@ -168,10 +173,10 @@ var Dialog = function (_React$Component) {
 }(_react2.default.Component);
 
 Dialog.confirm = function (opt) {
-    _reactDom2.default.render(_react2.default.createElement(Dialog, _extends({ okBtnClass: 'btn-primary' }, opt, { confirm: true })), con);
+    return _reactDom2.default.render(_react2.default.createElement(Dialog, _extends({ okBtnClass: 'btn-primary' }, opt, { confirm: true })), con);
 };
 Dialog.alert = function (opt) {
-    _reactDom2.default.render(_react2.default.createElement(Dialog, _extends({ okBtnClass: '' }, opt)), con);
+    return _reactDom2.default.render(_react2.default.createElement(Dialog, _extends({ okBtnClass: '' }, opt)), con);
 };
 Dialog.defaultProps = {
     onOk: noop,
