@@ -68,14 +68,13 @@ var Dialog = function (_React$Component) {
 
     // 对外暴露该方法，给用户调用
     Dialog.prototype.destroy = function() {
-        this.setState({
-            visible: false
-        });
         this.unmountDialog();
-
     }
     Dialog.prototype._onCancel = function onCancel(e) {
         this.props.onCancel.call(this);
+        this.setState({
+            visible: false
+        });
         this.destroy();
     };
 
@@ -90,7 +89,7 @@ var Dialog = function (_React$Component) {
     Dialog.prototype.unmountDialog = function unmountDialog(callback) {
         var dialog = _reactDom2.default.findDOMNode(this.refs.dialog),
             comp = this;
-        dialog.addEventListener(_getTransitionEnd2.default, function () {
+        dialog && dialog.addEventListener(_getTransitionEnd2.default, function () {
             _reactDom2.default.unmountComponentAtNode(document.getElementById(conid));
             callback && callback.call(comp);
         });
@@ -99,7 +98,7 @@ var Dialog = function (_React$Component) {
     Dialog.prototype.componentDidMount = function componentDidMount() {
         var comp = this;
         var dialog = _reactDom2.default.findDOMNode(this.refs.dialog);
-        setTimeout(function () {
+        dialog && setTimeout(function () {
             comp.setState({
                 dialogMarginTop: -Math.round(dialog.clientHeight / 2) + 'px',
                 transitionStart: true
