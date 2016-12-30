@@ -68,13 +68,13 @@ var Dialog = function (_React$Component) {
 
     // 对外暴露该方法，给用户调用
     Dialog.prototype.destroy = function() {
+        this.setState({
+            visible: false
+        });
         this.unmountDialog();
     }
     Dialog.prototype._onCancel = function onCancel(e) {
         this.props.onCancel.call(this);
-        this.setState({
-            visible: false
-        });
         this.destroy();
     };
 
@@ -82,7 +82,7 @@ var Dialog = function (_React$Component) {
         // 点击确定按钮的回调函数，返回true或undefined则关闭对话框，返回false则不执行任何操作
         var needUnmount = this.props.onOk.call(this);
         if (needUnmount !== false) {
-            this._onCancel();
+            this.destroy();
         }
     };
 
