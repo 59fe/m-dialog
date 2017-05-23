@@ -194,14 +194,14 @@ Dialog.defaultProps = {
 };
 
 Dialog.propTypes = {
-    title:         _PropTypes2.string,
-    content:       _PropTypes2.string.isRequired,
-    withCloseIcon: _PropTypes2.bool,
-    hasFoot:       _PropTypes2.bool,
-    okBtnClass:    _PropTypes2.string,
-    okText:        _PropTypes2.string,
-    cancelText:    _PropTypes2.string,
-    onOk:          _PropTypes2.func
+    title:         _PropTypes2.default.string,
+    content:       _PropTypes2.default.string.isRequired,
+    withCloseIcon: _PropTypes2.default.bool,
+    hasFoot:       _PropTypes2.default.bool,
+    okBtnClass:    _PropTypes2.default.string,
+    okText:        _PropTypes2.default.string,
+    cancelText:    _PropTypes2.default.string,
+    onOk:          _PropTypes2.default.func
 };
 exports.default = Dialog;
 module.exports = exports['default'];
