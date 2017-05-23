@@ -1,6 +1,6 @@
 {
   "name": "m-dialog",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "m-dialog 移动端模态对话框",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   },
   "readmeFilename": "README.md",
   "dependencies": {
-    "react": "^15.5.4",
+    "react": "~15.5.4",
     "prop-types": "^15.5.8",
     "m-base": "^1.0.5",
     "m-mask": "^1.1.0",
