@@ -15,6 +15,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _PropTypes = require('prop-types');
+
+var _PropTypes2 = _interopRequireDefault(_PropTypes);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -190,14 +194,14 @@ Dialog.defaultProps = {
 };
 
 Dialog.propTypes = {
-    title: _react.PropTypes.string,
-    content: _react.PropTypes.string.isRequired,
-    withCloseIcon: _react.PropTypes.bool,
-    hasFoot: _react.PropTypes.bool,
-    okBtnClass: _react.PropTypes.string,
-    okText: _react.PropTypes.string,
-    cancelText: _react.PropTypes.string,
-    onOk: _react.PropTypes.func
+    title:         _PropTypes2.string,
+    content:       _PropTypes2.string.isRequired,
+    withCloseIcon: _PropTypes2.bool,
+    hasFoot:       _PropTypes2.bool,
+    okBtnClass:    _PropTypes2.string,
+    okText:        _PropTypes2.string,
+    cancelText:    _PropTypes2.string,
+    onOk:          _PropTypes2.func
 };
 exports.default = Dialog;
 module.exports = exports['default'];
